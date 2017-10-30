@@ -13,6 +13,7 @@ string	Aeroport::get(string x){
 		  if (x == "dat_inf") return dat_inf;
 		  if (x == "den_tar") return den_tar;
 		  if (x == "nr_curse") return nr_curse;
+		  return NULL;
 }
 
 void		Aeroport::print_data(){

@@ -13,6 +13,7 @@ string	Avion::get(string x){
 		  if (x == "h_ater")return h_ater;
 		  if (x == "pista")return pista;
 		  if (x == "nr_pas")return nr_pas;
+		  return NULL;
 }
 
 void	Avion::print_data(){

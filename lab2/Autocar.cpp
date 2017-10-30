@@ -9,6 +9,7 @@ void	Autocar::set(){
 string	Autocar::get(string x){
 		  if (x == "id_poarta") return id_poarta;
 		  if (x == "nr_pas") return nr_pas;
+		  return NULL;
 }
 
 void	Autocar::print_data(){

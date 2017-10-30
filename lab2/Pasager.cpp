@@ -15,6 +15,7 @@ string	Pasager::get(string x){
 		  if(x == "h_plec") return h_plec;
 		  if(x == "a_ater") return a_ater;
 		  if(x == "h_ater") return h_ater;
+		  return NULL;
 }
 
 void	Pasager::print_data(){
