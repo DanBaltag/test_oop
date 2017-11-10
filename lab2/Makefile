@@ -24,6 +24,9 @@ Pasager.o: Pasager.cpp
 main.o: main.cpp
 	$(MOB) main.cpp
 
+clob: $(OB)
+	rm $(OB)
+
 clear: $(EXE)
 	rm $(OB) $(EXE)
 

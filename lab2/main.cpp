@@ -4,15 +4,15 @@
 
 Aeroport* type();
 void set_val(list<Aeroport*> l);
-void make(int n, list<Aeroprot*> *l);
+void make(list<Aeroport*> *l);
 void print(list<Aeroport*> l);
 //void new_data(list<Aeroport*> l);
 
 int main(){
 	list<Aeroport*> l;
-	make(n, &l);
-	set_val(n, l);
-	print(n, a);
+	make(&l);
+	set_val(l);
+	print(l);
 }
 
 void	make(int n, list<Aeroport*> *l){
@@ -29,7 +29,7 @@ Aeroport* type(){
 	switch(k){
 		case 2: x = new Avion(); return x;
 		case 3: x = new Autocar(); return x;
-		case 4: x = new Pasager();a return x;
+		case 4: x = new Pasager(); return x;
 		default: x = new Aeroport(); return x;
 	}
 }
@@ -39,7 +39,7 @@ void	set_val(list<Aeroport*> l){
 		i->set();
 }
 
-void	print(int n, list<Aeroport*>){
+void	print(list<Aeroport*> l){
 	for (list<Aeroport*>::iterator i = l.begin(); i != l.end(); i++)
-		i->set();
+		i.set();
 }
