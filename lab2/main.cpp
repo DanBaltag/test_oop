@@ -36,10 +36,10 @@ Aeroport* type(){
 
 void	set_val(list<Aeroport*> l){
 	for (list<Aeroport*>::iterator i = l.begin(); i != l.end(); i++)
-		i->set();
+	(*i)->set();
 }
 
 void	print(list<Aeroport*> l){
 	for (list<Aeroport*>::iterator i = l.begin(); i != l.end(); i++)
-		i.set();
+		(*i)->set();
 }
