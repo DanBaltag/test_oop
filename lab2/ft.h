@@ -10,6 +10,7 @@ class Interfata{
 		virtual void	set() = 0;
 		virtual	string	get(string) = 0;
 		virtual	void	print_data() = 0;
+		
 	protected:
 		string	den_comp;
 		string	dat_inf;

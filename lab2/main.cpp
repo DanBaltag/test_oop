@@ -1,22 +1,24 @@
 #include "ft.h"
+#include <list>
+#include <iterator>
 
 Aeroport* type();
-void	set_val(int n, Aeroport**);
-void	make(int, Aeroport**);
-void	print(int n, Aeroport *x[]);
+void set_val(list<Aeroport*> l);
+void make(int n, list<Aeroprot*> *l);
+void print(list<Aeroport*> l);
+//void new_data(list<Aeroport*> l);
 
 int main(){
-	int n;
-	cout<<"n=";cin>>n;
-	Aeroport *a[n];
-	make(n, a);
-	set_val(n, a);
+	list<Aeroport*> l;
+	make(n, &l);
+	set_val(n, l);
 	print(n, a);
 }
 
-void	make(int n, Aeroport *a[]){
+void	make(int n, list<Aeroport*> *l){
 	for(int i = 0; i < n; i++){
-		a[i] = type();
+		Aeroport *x = type();
+		l->push_back(x);
 	}
 }
 
@@ -27,19 +29,17 @@ Aeroport* type(){
 	switch(k){
 		case 2: x = new Avion(); return x;
 		case 3: x = new Autocar(); return x;
-		case 4: x = new Pasager(); return x;
+		case 4: x = new Pasager();a return x;
 		default: x = new Aeroport(); return x;
 	}
 }
 
-void	set_val(int n, Aeroport *x[]){
-	for (int i = 0; i < n; i++){
-		x[i]->set();
-	}
+void	set_val(list<Aeroport*> l){
+	for (list<Aeroport*>::iterator i = l.begin(); i != l.end(); i++)
+		i->set();
 }
 
-void	print(int n, Aeroport *x[]){
-	for (int i = 0; i < n; i++){
-		x[i]->print_data();
-	}
+void	print(int n, list<Aeroport*>){
+	for (list<Aeroport*>::iterator i = l.begin(); i != l.end(); i++)
+		i->set();
 }
