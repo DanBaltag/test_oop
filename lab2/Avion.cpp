@@ -1,5 +1,9 @@
 #include "ft.h"
 
+Avion::Avion(){}
+
+Avion::Avion(int i):Aeroport(i){}
+
 void	Avion::set(){
 		  cout<<"h_dec=";cin>>h_dec;
 		  cout<<"h_ater=";cin>>h_ater;

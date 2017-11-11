@@ -1,5 +1,9 @@
 #include "ft.h"
 
+Autocar::Autocar(){}
+
+Autocar::Autocar(int i):Aeroport(i){}
+
 void	Autocar::set(){
 		  cout<<"id_poarta=";cin>>id_poarta;
 		  cout<<"nr_pas=";cin>>nr_pas;

@@ -2,6 +2,8 @@
 #include <list>
 #include <iterator>
 
+static int id = 0;
+
 Aeroport* type();
 void set_val(list<Aeroport*> l);
 void make(list<Aeroport*> *l);
@@ -16,6 +18,7 @@ int main(){
 	make(&l);
 	set_val(l);
 	print(l);
+	usr_ch(&l);
 }
 
 void	make(list<Aeroport*> *l){
@@ -32,10 +35,10 @@ Aeroport* type(){
 	Aeroport *x;
 	cout<<"choose the class:\n1:Aeroport\n2:Avion\n3:Autocar\n4:Pasager\n"; cin>>k;
 	switch(k){
-		case 2: x = new Avion(); return x;
-		case 3: x = new Autocar(); return x;
-		case 4: x = new Pasager(); return x;
-		default: x = new Aeroport(); return x;
+		case 2: x = new Avion(id++); return x;
+		case 3: x = new Autocar(id++); return x;
+		case 4: x = new Pasager(id++); return x;
+		default: x = new Aeroport(id++); return x;
 	}
 }
 
@@ -52,30 +55,34 @@ void	print(list<Aeroport*> l){
 void usr_ch(list<Aeroport*> *l){
 	string c;
 	while(c != "quit"){
-		cout<<"'add' to add an element\n'erase' to delete an element\n'quit' to exit";
+		cout<<"'add' to add an element\n'erase' to delete an element\n'quit' to exit\n";
 		cin>>c;
-		if (c == "add") add_elmt(l);
-		if (c == "erase") erase_elmt(l);
+		if (c == "add" || c == "a") add_elmt(l);
+		if (c == "erase" || c == "e") erase_elmt(l);
+		print(*l);
 	}
+	cout<<"wrong input\n"; return;
 }
 
 void add_elmt(list<Aeroport*> *l){
 	Aeroport *x = type();
+	x->set();
 	list<Aeroport*>::iterator i;
 	string cmd;
 	cout<<"where to add?\n'begin' to add at the beggining of the list\n'end' to add at the end of the list\n'find' to add at a certain element by the id\n"; cin>>cmd;
-	if(cmd == "begin"){ l->insert(l->begin(), x); return;}
-	if(cmd == "end"){ l->push_back(x); return;}
-	if(cmd == "find"){
+	if(cmd == "begin" || cmd == "b"){ l->insert(l->begin(), x); return;}
+	if(cmd == "end" || cmd == "e"){ l->push_back(x); return;}
+	if(cmd == "find" || cmd == "f"){
 		for (i = l->begin(); i != l->end(); i++)
 			cout<<(*i)->get_id()<<"...\n";
 		int e;
-		cout<<"choose the id of the element before you want to add"; cin>>e;
+		cout<<"choose the id of the element before you want to add\n"; cin>>e;
 		if (e < 0 || e > (*(l->end()))->get_id()){ cout<<"invalid id\n"; return; }
 		for(i = l->begin(); i != l->end(); i++)
 			if(e == (*i)->get_id()){
 				l->insert(i, x); return;
 			}
+		print(*l);
 	}
 	cout<<"wrong input\n"; return;
 }
@@ -84,13 +91,13 @@ void erase_elmt(list<Aeroport*> *l){
 	list<Aeroport*>::iterator i;
 	string cmd;
 	cout<<"what to delete?\n'begin' to delete the first element\n'end' to delete the last element\n'find' to delete at a certain element by the id\n"; cin>>cmd;
-	if(cmd == "begin"){ l->erase(l->begin());return; }
-	if(cmd == "end"){ l->erase(l->end()); return;}
-	if(cmd == "find"){
+	if(cmd == "begin" || cmd == "b"){ l->erase(l->begin());return; }
+	if(cmd == "end" || cmd == "e"){ l->erase(l->end()); return;}
+	if(cmd == "find" || cmd == "f"){
 		for (i = l->begin(); i != l->end(); i++)
 			cout<<(*i)->get_id()<<"...\n";
 		int e;
-		cout<<"choose the id of the element you want to delete"; cin>>e;
+		cout<<"choose the id of the element you want to delete\n"; cin>>e;
 		if (e < 0 || e > (*(l->end()))->get_id()){ cout<<"invalid id\n"; return; }
 		for(i = l->begin(); i != l->end(); i++)
 			if(e == (*i)->get_id()){

@@ -1,9 +1,8 @@
 #include "ft.h"
 
-Aeroport::Aeroport(){
-	if (id > 0) id++;
-	else id = 0;
-}
+Aeroport::Aeroport(){}
+
+Aeroport::Aeroport(int i):id(i){}
 
 int Aeroport::get_id(){
 	return id;

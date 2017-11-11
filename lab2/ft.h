@@ -20,9 +20,10 @@ class Interfata{
 
 class Aeroport:public Interfata{
 	protected:
-		static int id;
+		int id;
 	public:
 		Aeroport();
+		Aeroport(int);
 		void	set();
 		string	get(string);
 		void	print_data();
@@ -31,6 +32,8 @@ class Aeroport:public Interfata{
 
 class Avion:virtual public Aeroport{
 	public:
+		Avion();
+		Avion(int);
 		void	set();
 		string	get(string);
 		void	print_data();
@@ -43,6 +46,8 @@ class Avion:virtual public Aeroport{
 
 class Autocar:virtual public Aeroport{
 	public:
+		Autocar();
+		Autocar(int);
 		virtual void	set();
 		virtual string	get(string);
 		virtual void	print_data();
@@ -53,6 +58,8 @@ class Autocar:virtual public Aeroport{
 
 class Pasager:public Avion, public Autocar{
 	public:
+		Pasager();
+		Pasager(int);
 		void	set();
 		string	get(string);
 		void	print_data();

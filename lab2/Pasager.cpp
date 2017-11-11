@@ -1,5 +1,7 @@
 #include "ft.h"
 
+Pasager::Pasager(int i):Aeroport(i),Avion(),Autocar(){}
+
 void	Pasager::set(){
 		  cout<<"id_bil=";cin>>id_bil;
 		  cout<<"a_plec=";cin>>a_plec;
