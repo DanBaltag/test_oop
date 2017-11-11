@@ -12,17 +12,21 @@ class Interfata{
 		virtual	void	print_data() = 0;
 		
 	protected:
-		string	den_comp;
-		string	dat_inf;
-		string	den_tar;
-		string	nr_curse;
+		string den_comp;
+		string dat_inf;
+		string den_tar;
+		string nr_curse;
 };
 
 class Aeroport:public Interfata{
+	protected:
+		static int id;
 	public:
+		Aeroport();
 		void	set();
 		string	get(string);
 		void	print_data();
+		int	get_id();
 };
 
 class Avion:virtual public Aeroport{

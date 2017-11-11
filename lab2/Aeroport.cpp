@@ -1,5 +1,14 @@
 #include "ft.h"
 
+Aeroport::Aeroport(){
+	if (id > 0) id++;
+	else id = 0;
+}
+
+int Aeroport::get_id(){
+	return id;
+}
+
 void		Aeroport::set(){
 		  cout<<"den_comp=";cin>>den_comp;
 		  cout<<"dat_inf=";cin>>dat_inf;
