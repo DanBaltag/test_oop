@@ -54,14 +54,13 @@ void	print(list<Aeroport*> l){
 
 void usr_ch(list<Aeroport*> *l){
 	string c;
-	while(c != "quit"){
+	while(c != "quit" || c != "q"){
 		cout<<"'add' to add an element\n'erase' to delete an element\n'quit' to exit\n";
 		cin>>c;
 		if (c == "add" || c == "a") add_elmt(l);
 		if (c == "erase" || c == "e") erase_elmt(l);
 		print(*l);
 	}
-	cout<<"wrong input\n"; return;
 }
 
 void add_elmt(list<Aeroport*> *l){
@@ -78,10 +77,12 @@ void add_elmt(list<Aeroport*> *l){
 		int e;
 		cout<<"choose the id of the element before you want to add\n"; cin>>e;
 		if (e < 0 || e > (*(l->end()))->get_id()){ cout<<"invalid id\n"; return; }
-		for(i = l->begin(); i != l->end(); i++)
+		for(i = l->begin(); i != l->end(); i++){
+			list<Aeroport*>::iterator aux = i;
 			if(e == (*i)->get_id()){
 				l->insert(i, x); return;
 			}
+		}
 		print(*l);
 	}
 	cout<<"wrong input\n"; return;
@@ -92,17 +93,19 @@ void erase_elmt(list<Aeroport*> *l){
 	string cmd;
 	cout<<"what to delete?\n'begin' to delete the first element\n'end' to delete the last element\n'find' to delete at a certain element by the id\n"; cin>>cmd;
 	if(cmd == "begin" || cmd == "b"){ l->erase(l->begin());return; }
-	if(cmd == "end" || cmd == "e"){ l->erase(l->end()); return;}
+	if(cmd == "end" || cmd == "e"){ l->erase(--(l->end())); return;}
 	if(cmd == "find" || cmd == "f"){
 		for (i = l->begin(); i != l->end(); i++)
 			cout<<(*i)->get_id()<<"...\n";
 		int e;
 		cout<<"choose the id of the element you want to delete\n"; cin>>e;
 		if (e < 0 || e > (*(l->end()))->get_id()){ cout<<"invalid id\n"; return; }
-		for(i = l->begin(); i != l->end(); i++)
+		for(i = l->begin(); i != l->end(); i++){
+			list<Aeroport*>::iterator aux = i;
 			if(e == (*i)->get_id()){
-				l->erase(i); return;
+				l->erase(aux); return;
 			}
+		}
 	}
 	cout<<"wrong input\n"; return;
 }
