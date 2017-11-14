@@ -4,10 +4,6 @@ Aeroport::Aeroport(){}
 
 Aeroport::Aeroport(int i):id(i){}
 
-int Aeroport::get_id(){
-	return id;
-}
-
 void		Aeroport::set(){
 		  cout<<"den_comp=";cin>>den_comp;
 		  cout<<"dat_inf=";cin>>dat_inf;

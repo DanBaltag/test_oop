@@ -27,7 +27,6 @@ class Aeroport:public Interfata{
 		void	set();
 		string	get(string);
 		void	print_data();
-		int	get_id();
 };
 
 class Avion:virtual public Aeroport{

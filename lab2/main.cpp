@@ -54,58 +54,30 @@ void	print(list<Aeroport*> l){
 
 void usr_ch(list<Aeroport*> *l){
 	string c;
-	while(c != "quit" || c != "q"){
+	while(c != " "){
 		cout<<"'add' to add an element\n'erase' to delete an element\n'quit' to exit\n";
 		cin>>c;
 		if (c == "add" || c == "a") add_elmt(l);
 		if (c == "erase" || c == "e") erase_elmt(l);
-		print(*l);
+		if (c == "quit" || c == "q") return;
 	}
+	print(*l);
 }
 
 void add_elmt(list<Aeroport*> *l){
 	Aeroport *x = type();
 	x->set();
-	list<Aeroport*>::iterator i;
 	string cmd;
-	cout<<"where to add?\n'begin' to add at the beggining of the list\n'end' to add at the end of the list\n'find' to add at a certain element by the id\n"; cin>>cmd;
+	cout<<"where to add?\n'begin' to add at the beggining of the list\n'end' to add at the end\n"; cin>>cmd;
 	if(cmd == "begin" || cmd == "b"){ l->insert(l->begin(), x); return;}
 	if(cmd == "end" || cmd == "e"){ l->push_back(x); return;}
-	if(cmd == "find" || cmd == "f"){
-		for (i = l->begin(); i != l->end(); i++)
-			cout<<(*i)->get_id()<<"...\n";
-		int e;
-		cout<<"choose the id of the element before you want to add\n"; cin>>e;
-		if (e < 0 || e > (*(l->end()))->get_id()){ cout<<"invalid id\n"; return; }
-		for(i = l->begin(); i != l->end(); i++){
-			list<Aeroport*>::iterator aux = i;
-			if(e == (*i)->get_id()){
-				l->insert(i, x); return;
-			}
-		}
-		print(*l);
-	}
 	cout<<"wrong input\n"; return;
 }
 
 void erase_elmt(list<Aeroport*> *l){
-	list<Aeroport*>::iterator i;
 	string cmd;
-	cout<<"what to delete?\n'begin' to delete the first element\n'end' to delete the last element\n'find' to delete at a certain element by the id\n"; cin>>cmd;
+	cout<<"what to delete?\n'begin' to delete the first element\n'end' to delete the last element\n"; cin>>cmd;
 	if(cmd == "begin" || cmd == "b"){ l->erase(l->begin());return; }
 	if(cmd == "end" || cmd == "e"){ l->erase(--(l->end())); return;}
-	if(cmd == "find" || cmd == "f"){
-		for (i = l->begin(); i != l->end(); i++)
-			cout<<(*i)->get_id()<<"...\n";
-		int e;
-		cout<<"choose the id of the element you want to delete\n"; cin>>e;
-		if (e < 0 || e > (*(l->end()))->get_id()){ cout<<"invalid id\n"; return; }
-		for(i = l->begin(); i != l->end(); i++){
-			list<Aeroport*>::iterator aux = i;
-			if(e == (*i)->get_id()){
-				l->erase(aux); return;
-			}
-		}
-	}
 	cout<<"wrong input\n"; return;
 }
