@@ -6,11 +6,20 @@ using namespace std;
 
 class String{
 	protected:
-		string x;
+		char* x;
+		int s;
 	public:
 		String();
-		String(string s);
-		String operator+(String);
+		String(int);
+		String(char*, int);
+		void set_size();
+		String operator+(String&);
+		char* get_string();
+		int get_size();
+		//bool operator==(String&);
+
+		friend ostream &operator<<(ostream&, String&);
+		friend istream &operator>>(istream&, String&);
 };
 
 #endif
