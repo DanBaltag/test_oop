@@ -14,6 +14,7 @@ class String{
 		String(char*, int);
 		void set_size();
 		String operator+(String&);
+		void operator+=(String&);
 		char* get_string();
 		int get_size();
 		//bool operator==(String&);
