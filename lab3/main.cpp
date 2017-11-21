@@ -12,6 +12,8 @@ int main(){
 	comp(x,y);
 	x = x - y; // x -= y;
 	cout<<x<<"\n";
+	x = x - 1;
+	cout<<x<<"\n";
 }
 
 void comp(String x, String y){

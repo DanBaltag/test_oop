@@ -16,6 +16,7 @@ class String{
 
 		String operator+(String&);
 		String operator-(String&);
+		String operator-(int);
 		void operator+=(String&);
 		void operator-=(String&);
 		char* get_string();

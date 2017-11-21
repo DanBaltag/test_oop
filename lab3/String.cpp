@@ -60,9 +60,11 @@ bool String::operator==(String&s2){
 	return 0;
 }
 int find(char* s1, char* s2){
-	int pos = -1, d = 0, i = 0, j, c = 0;
+	int pos = -1, s = -1, d = -1, i = 0, j, c = 0;
 
-	while(s2[i++] != '\0') d++;
+	while(s1[++s] != '\0');
+	while(s2[++d] != '\0');
+	if (d > s) return -1;
 	for (i = 0, j = 0; s1[i] != '\0';){
 		if (s1[i++] == s2[j]){
 			c++; j++;
@@ -103,4 +105,16 @@ void String::operator-=(String &s2){
 	s2.set_size();
 	x = rm(x, s2.get_string());
 	set_size();
+}
+String String::operator-(int n){
+	if (n < s){
+		set_size();
+		int d;
+		cout<<"nr of char to delete:";cin>>d;
+		while(x[n + d] != '\0')
+			x[n] = x[d + n++];
+		x[n] = '\0';
+	}
+	String z(x, s);
+	return z;
 }
