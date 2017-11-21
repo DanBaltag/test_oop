@@ -14,10 +14,12 @@ class String{
 		String(char*, int);
 		void set_size();
 		String operator+(String&);
+		String operator-(String&);
 		void operator+=(String&);
 		char* get_string();
 		int get_size();
-		//bool operator==(String&);
+		int find_substring(char*, char*);
+		bool operator==(String&);
 
 		friend ostream &operator<<(ostream&, String&);
 		friend istream &operator>>(istream&, String&);
