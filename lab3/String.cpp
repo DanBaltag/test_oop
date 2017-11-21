@@ -8,41 +8,36 @@ String::String(int n):s(n){
 }
 String::String(char* sir, int i):x(sir), s(i){}
 void String::set_size(){
-	int c = 0;
-	while(x[c++] != '\0');
+	int c = -1;
+	while(x[++c] != '\0');
 	if (c < s) s = c;
 }
 int String::get_size(){
 	return s;
 }
+char* add(char* x, char* y, int max_s){
+	int i = 0, j = 0;
+	char* sir = new char[max_s];
+	while(y[j] != '\0'){
+		while(x[i] != '\0'){
+			sir[i] = x[i++];
+		}
+		sir[i++] = y[j++];
+	}
+	return sir;
+}
 String String::operator+(String &s2){
 	this->set_size();
 	s2.set_size();
-	int max_s = this->s + s2.get_size() - 1;
-	int i = 0, j = 0;
-	char* sir = new char[max_s];
-	while(s2.get_string()[j] != '\0'){
-		while(this->x[i] != '\0'){
-			sir[i] = this->x[i++];
-		}
-		sir[i++] = s2.get_string()[j++];
-	}
-	String y(sir, max_s);
+	int max_s = this->s + s2.get_size() + 1;
+	String y(add(x, s2.get_string(), max_s), max_s);
 	return y;
 }
 void String::operator+=(String &s2){
 	this->set_size();
 	s2.set_size();
 	int max_s = this->s + s2.get_size();
-	int i = 0, j = 0;
-	char* sir = new char[max_s];
-	while(s2.get_string()[j] != '\0'){
-		while(this->x[i] != '\0'){
-			sir[i] = this->x[i++];
-		}
-		sir[i++] = s2.get_string()[j++];
-	}
-	x = sir;
+	x = add(x, s2.get_string(), max_s);
 	s = max_s; 
 }
 char* String::get_string(){
@@ -64,41 +59,48 @@ bool String::operator==(String&s2){
 	}
 	return 0;
 }
-
-int String::find_substring(char* s1, char* s2){
+int find(char* s1, char* s2){
 	int pos = -1, d = 0, i = 0, j, c = 0;
 
 	while(s2[i++] != '\0') d++;
-
-	for (i = 0, j = 0; s1[i] != '\0'; i++){
-		if (pos < 0 && s1[i] == s2[j++]){
-			pos == i++;
-			c++;
-		}
-		if (pos >= 0){
-			while (s1[i++] == s2[j++])
+	for (i = 0, j = 0; s1[i] != '\0';){
+		if (s1[i++] == s2[j]){
+			c++; j++;
+			while (s1[i] == s2[j] && s1[i++] != '\n' && s2[j++] != '\n')
 				c++;
 			if (c == d)
-				return i - c - 1;
+				return i - c;
 			else{c = 0; j = 0;}
 		}
 	}
 	return -1;
 }
-String String::operator-(String &s2){
-	set_size();
-	s2.set_size();
-	int i, d = s2.get_size();
-	i = find_substring(x, s2.get_string());
-	cout<<"found "<<i<<"\n";
-	if (i > -1){
-		while (i < i + d)
+int String::find_substring(char* s1, char* s2){
+	return find(s1, s2);
+}
+char* rm(char* x, char* y){
+	int i, d = -1;
+	while(y[++d] != '\0');
+	if ((i = find(x, y)) > -1){
+		while (x[i + d] != '\0')
 			x[i] = x[d + i++];
 		x[i] = '\0';
 	}else{
-		cout<<s2.get_string()<<" was not found in "<<x<<"\n";
+		cout<<y<<" was not found in "<<x<<"\n";
 	}
+	return x;
+}
+String String::operator-(String &s2){
+	set_size();
+	s2.set_size();
+	x = rm(x, s2.get_string());
 	set_size();
 	String z(x, s);
 	return z;
+}
+void String::operator-=(String &s2){
+	set_size();
+	s2.set_size();
+	x = rm(x, s2.get_string());
+	set_size();
 }

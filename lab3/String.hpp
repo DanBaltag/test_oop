@@ -13,9 +13,11 @@ class String{
 		String(int);
 		String(char*, int);
 		void set_size();
+
 		String operator+(String&);
 		String operator-(String&);
 		void operator+=(String&);
+		void operator-=(String&);
 		char* get_string();
 		int get_size();
 		int find_substring(char*, char*);
