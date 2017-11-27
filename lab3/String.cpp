@@ -7,9 +7,13 @@ String::String(int n):s(n){
 	x = new char[s];
 }
 String::String(char* sir, int i):x(sir), s(i){}
-void String::set_size(){
+int s_size(char x[]){
 	int c = -1;
 	while(x[++c] != '\0');
+	return c;
+}
+void String::set_size(){
+	int c = s_size(x);
 	if (c < s) s = c;
 }
 int String::get_size(){
