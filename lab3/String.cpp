@@ -72,7 +72,7 @@ int find(char* s1, char* s2){
 	for (i = 0, j = 0; s1[i] != '\0';){
 		if (s1[i++] == s2[j]){
 			c++; j++;
-			while (s1[i] == s2[j] && s1[i++] != '\n' && s2[j++] != '\n')
+			while (s1[i] == s2[j] && s1[i++] != '\0' && s2[j++] != '\0')
 				c++;
 			if (c == d)
 				return i - c;
@@ -88,6 +88,7 @@ char* rm(char* x, char* y){
 	int i, d = -1;
 	while(y[++d] != '\0');
 	if ((i = find(x, y)) > -1){
+		cout<<"i="<<i<<endl;
 		while (x[i + d] != '\0')
 			x[i] = x[d + i++];
 		x[i] = '\0';
