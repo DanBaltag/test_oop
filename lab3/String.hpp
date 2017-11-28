@@ -26,6 +26,7 @@ class String{
 		bool operator==(String&);
 		void operator--(int);
 
+		friend String operator-(int, String&);
 		friend void operator--(String&);
 		friend ostream &operator<<(ostream&, String&);
 		friend istream &operator>>(istream&, String&);

@@ -117,13 +117,14 @@ void String::operator-=(String &s2){
 }
 String String::operator-(int n){
 	set_size();
-	if (n < s){
+	if (n <= s){
 		int d;
 		cout<<"nr of char to delete:";cin>>d;
 		while(x[n + d] != '\0')
 			x[n] = x[d + n++];
 		x[n] = '\0';
 	}
+	else cerr<<"int has a higher value than String size\n";
 	String z(x, s);
 	return z;
 }
@@ -136,4 +137,18 @@ void operator--(String& ob){
 	ob.set_size();
 	int n = ob.get_size();
 	ob.set_size(n--);
+}
+String operator-(int n, String& ob){
+	ob.set_size();
+	char* x = ob.get_string();
+	if (n <= ob.get_size()){
+		int d;
+		cout<<"nr of char to delete:";cin>>d;
+		while(x[n + d] != '\0')
+			x[n] = x[d + n++];
+		x[n] = '\0';
+	}
+	else cerr<<"int has a higher value than String size\n";
+	String z(x, ob.get_size());
+	return z;
 }
