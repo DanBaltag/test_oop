@@ -5,7 +5,7 @@ void comp(String x, String y);
 int main(){
 	String x(80), y;
 	cin>>x;
-	cin>>y;
+	/*cin>>y;
 	comp(x,y);
 	x += y;
 	cout<<x<<"\n";
@@ -13,6 +13,11 @@ int main(){
 	x = x - y; // x -= y;
 	cout<<x<<"\n";
 	x = x - 1;
+	cout<<x<<"\n";
+	*/
+	x--;
+	cout<<x<<"\n";
+	--x;
 	cout<<x<<"\n";
 }
 

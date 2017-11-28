@@ -16,6 +16,10 @@ void String::set_size(){
 	int c = s_size(x);
 	if (c < s) s = c;
 }
+void String::set_size(int c){
+	if (c <= s){ s = c; x[s-1] = '\0'; }
+	else cerr<<"wrong values to set_size(int)\n";
+}
 int String::get_size(){
 	return s;
 }
@@ -112,8 +116,8 @@ void String::operator-=(String &s2){
 	set_size();
 }
 String String::operator-(int n){
+	set_size();
 	if (n < s){
-		set_size();
 		int d;
 		cout<<"nr of char to delete:";cin>>d;
 		while(x[n + d] != '\0')
@@ -122,4 +126,14 @@ String String::operator-(int n){
 	}
 	String z(x, s);
 	return z;
+}
+
+void String::operator--(int){
+	set_size();
+	x[--s] = '\0';
+}
+void operator--(String& ob){
+	ob.set_size();
+	int n = ob.get_size();
+	ob.set_size(n--);
 }

@@ -13,6 +13,7 @@ class String{
 		String(int);
 		String(char*, int);
 		void set_size();
+		void set_size(int);
 
 		String operator+(String&);
 		String operator-(String&);
@@ -23,7 +24,9 @@ class String{
 		int get_size();
 		int find_substring(char*, char*);
 		bool operator==(String&);
+		void operator--(int);
 
+		friend void operator--(String&);
 		friend ostream &operator<<(ostream&, String&);
 		friend istream &operator>>(istream&, String&);
 };
