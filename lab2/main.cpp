@@ -55,10 +55,11 @@ void	print(list<Aeroport*> l){
 void usr_ch(list<Aeroport*> *l){
 	string c;
 	while(c != " "){
-		cout<<"'add' to add an element\n'erase' to delete an element\n'quit' to exit\n";
+		cout<<"'add' to add an element\n'erase' to delete an element\n'print' to print the list\n'quit' to exit\n";
 		cin>>c;
 		if (c == "add" || c == "a") add_elmt(l);
 		if (c == "erase" || c == "e") erase_elmt(l);
+		if (c == "print" || c == "p") print(*l);
 		if (c == "quit" || c == "q") return;
 	}
 	print(*l);
