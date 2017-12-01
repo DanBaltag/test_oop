@@ -11,6 +11,7 @@ class String{
 	public:
 		String();
 		String(int);
+		String(char*);
 		String(char*, int);
 		void set_size();
 		void set_size(int);

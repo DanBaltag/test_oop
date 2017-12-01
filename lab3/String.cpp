@@ -6,6 +6,7 @@ String::String():s(80){
 String::String(int n):s(n){
 	x = new char[s];
 }
+String::String(char* sir):x(sir), s(80){}
 String::String(char* sir, int i):x(sir), s(i){}
 int s_size(char x[]){
 	int c = -1;

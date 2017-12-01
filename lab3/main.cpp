@@ -32,14 +32,66 @@ void help(){
 }
 void select_op(String& x, string op){
 	String y;
-	if (op == "help") hepl();
+	if (op == "help"){ hepl(); continue;}
+	if (op == "- int"){ 
+		int z;
+		cin>>z;
+		x = x - z;
+		cout<<x<<"\n";
+	       continue;}
+	if (op == "- ob2"){ 
+		cin>>y;
+		x = x - y;
+		cout<<x<<"\n";
+	       continue;}
+	if (op == "+ ob2"){ 
+		cin>>y;
+		x = x + y;
+		cout<<x<<"\n";
+	       continue;}
+	if (op == "+= ob2"){ 
+		cin>>y;
+		x += y;
+		cout<<x<<"\n";
+	       continue;}
+	if (op == "-= ob2"){ 
+		cin>>y;
+		x -= y;
+		cout<<x<<"\n";
+	       continue;}
+	if (op == "-= ob2"){ 
+		cin>>y;
+		x -= y;
+		cout<<x<<"\n";
+	       continue;}
+	if(op == "--"){
+		x--;
+		cout<<x<<"\n";
+	}
+}
+int check_str(string x){
+	int i = -1;
+	while (x[++i] != '\n'){
+		if (x[i] == '-' && x[i+1] == '-' && x[i+2] != '-')
+			return 2;
+		if (x[i] < 48 && x[i] > 57) return 1;
+		return 0;
 }
 void cmd(){
-	String x;
-	string op;
+	string op,str;
+	help();
 	while(true){
-		cin>>x;
-		if (x == "quit" || x == "q") return;
+		cout<<"!quit or !q to exit\n";
+		cin>>str;
+		if (str == "!quit" || str == "!q") return;
+		if (!check_str(str)){
+			int n = stoi(str);
+			String x(str);
+			x = n - x;
+			cout<<x<<"\n";
+			continue;
+		}
+		if (check_str(str) == 2)
 		cin>>op;
 	}
 }
