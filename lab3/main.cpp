@@ -2,25 +2,10 @@
 
 void comp(String x, String y);
 void cmd();
+void select_op(String& x, string op);
 
 int main(){
-	String x(80), y;
-	cin>>x;
-	cin>>y;
-	comp(x,y);
-	x += y;
-	cout<<x<<"\n";
-	comp(x,y);
-	x = x - y; // x -= y;
-	cout<<x<<"\n";
-	x = x - 1;
-	cout<<x<<"\n";
-	x--;
-	cout<<x<<"\n";
-	--x;
-	cout<<x<<"\n";
-	x = 1 - x;
-	cout<<x<<"\n";
+	cmd();
 }
 
 void comp(String x, String y){
@@ -28,70 +13,74 @@ void comp(String x, String y){
 	else cout<<x<<" != "<<y<<"\n";
 }
 void help(){
-	cout<<"cout<<ob print String\ncin>>\nob1 + ob2 concatenate String\n ob1 - ob2 eliminate ob2 from ob1\n ob1 += ob2 and ob1 -= ob2\n ob1 - int x eliminate n chars from x pos of ob1\n int x - ob1 the same as ob1 - int x\n --ob and ob--\n";
+	cout<<"1:cout<<ob print String\n2:cin>> read string\n3:ob1 + ob2 concatenate String\n4:ob1 - ob2 eliminate ob2 from ob1\n5:ob1 += ob2\n6:ob1 -= ob2\n7:ob1 - int x eliminate n chars from x pos of ob1\n8:int x - ob1 the same as ob1 - int x\n9:--ob\n10:ob--\n11:ob1 == ob2 to compare\n";
 }
 void select_op(String& x, string op){
 	String y;
-	if (op == "help"){ hepl(); continue;}
-	if (op == "- int"){ 
+	if (op == "1"){ 
+		cout<<x<<"\n";
+	       return;}
+	if (op == "2"){ 
+		cin>>x;
+	       return;}
+	if (op == "3"){ 
+		cin>>y;
+		x = x + y;
+		cout<<x<<"\n";
+	       return;}
+	if (op == "4"){ 
+		cin>>y;
+		x = x - y;
+		cout<<x<<"\n";
+	       return;}
+	if (op == "5"){ 
+		cin>>y;
+		x += y;
+		cout<<x<<"\n";
+	       return;}
+	if (op == "6"){ 
+		cin>>y;
+		x -= y;
+		cout<<x<<"\n";
+	       return;}
+	if(op == "7"){
 		int z;
 		cin>>z;
 		x = x - z;
 		cout<<x<<"\n";
-	       continue;}
-	if (op == "- ob2"){ 
-		cin>>y;
-		x = x - y;
-		cout<<x<<"\n";
-	       continue;}
-	if (op == "+ ob2"){ 
-		cin>>y;
-		x = x + y;
-		cout<<x<<"\n";
-	       continue;}
-	if (op == "+= ob2"){ 
-		cin>>y;
-		x += y;
-		cout<<x<<"\n";
-	       continue;}
-	if (op == "-= ob2"){ 
-		cin>>y;
-		x -= y;
-		cout<<x<<"\n";
-	       continue;}
-	if (op == "-= ob2"){ 
-		cin>>y;
-		x -= y;
-		cout<<x<<"\n";
-	       continue;}
-	if(op == "--"){
+		return;
+	}
+	if (op == "8"){
+		int z;
+		cin>>z;
+		x = z - x;
+		return;
+	}
+	if (op == "9"){
 		x--;
-		cout<<x<<"\n";
+		cout<<x;
+		return;
+	}
+	if (op == "10"){
+		--x;
+		return;
+	}
+	if (op == "11"){
+		cin>>y;
+		comp(x,y);
 	}
 }
-int check_str(string x){
-	int i = -1;
-	while (x[++i] != '\n'){
-		if (x[i] == '-' && x[i+1] == '-' && x[i+2] != '-')
-			return 2;
-		if (x[i] < 48 && x[i] > 57) return 1;
-		return 0;
-}
 void cmd(){
-	string op,str;
+	String x;
+	cin>>x;
+	string op;
 	help();
 	while(true){
 		cout<<"!quit or !q to exit\n";
-		cin>>str;
-		if (str == "!quit" || str == "!q") return;
-		if (!check_str(str)){
-			int n = stoi(str);
-			String x(str);
-			x = n - x;
-			cout<<x<<"\n";
-			continue;
-		}
-		if (check_str(str) == 2)
+		cout<<"!help or !h to exit\n";
 		cin>>op;
+		if (op == "!quit" || op == "!q") return;
+		if (op == "!help" || op == "!h") help();
+		select_op(x, op);
 	}
 }
